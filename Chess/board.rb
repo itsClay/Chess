@@ -28,6 +28,13 @@ class Board
     raise "cant move there." if self[end_pos] == nil || !@null_piece
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
   end
+
+  def in_bounds(pos)
+    row, col = pos
+    return false if row < 0 || col < 0
+    return false if row > 7 || col > 7
+    true
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
