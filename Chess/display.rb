@@ -33,6 +33,7 @@ end
 if __FILE__ == $PROGRAM_NAME
   b = Board.new
   d = Display.new(b)
+  d.render
   while true
     d.cursor.get_input
     system("clear")

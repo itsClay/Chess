@@ -1,4 +1,4 @@
-require_relative 'moving_modules'
+require_relative 'stepping_piece_module'
 require 'colorize'
 
 class Knight < Piece

@@ -1,4 +1,4 @@
-require_relative 'moving_modules'
+require_relative 'sliding_piece_module'
 require 'colorize'
 
 class King < Piece

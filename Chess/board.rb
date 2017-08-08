@@ -12,21 +12,24 @@ class Board
   attr_reader :grid
 
   def initialize
-    @null_piece = NullPiece.new(nil, self, nil)
+    @null_piece = NullPiece.instance
     @grid = Array.new(8) { Array.new(8, @null_piece) }
     populate_pieces
   end
 
   def populate_pieces
-    back_line = %w(rook knight bishop king queen bishop knight rook)
+    back_line = %w(Rook Knight Bishop King Queen Bishop Knight Rook)
     (0...back_line.length).each do |i|
-      self[[0, i]] = back_line[i]
+      self[[0, i]] = eval("#{back_line[i]}.new([0,i], self, :black)")
+      self[[1, i]] = Pawn.new([1,i], self, :black)
+      self[[6, i]] = Pawn.new([6,i], self, :white)
+      self[[7, i]] = eval("#{back_line[i]}.new([7,i], self, :white)")
     end
 
-    self[[0,0]] = Rook.new([0,0], self, :black)
-    self[[0,7]] = Rook.new([0,0], self, :black)
-    self[[7,0]] = Rook.new([0,0], self, :white)
-    self[[7,7]] = Rook.new([0,0], self, :white)
+    # self[[0,0]] = Rook.new([0,0], self, :black)
+    # self[[0,7]] = Rook.new([0,0], self, :black)
+    # self[[7,0]] = Rook.new([0,0], self, :white)
+    # self[[7,7]] = Rook.new([0,0], self, :white)
   end
 
   def []=(pos, val) # setter

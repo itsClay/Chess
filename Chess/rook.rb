@@ -1,33 +1,12 @@
-require_relative 'moving_modules'
+require_relative 'sliding_piece_module'
 require 'colorize'
+require_relative 'piece'
 
 class Rook < Piece
   include SlidingPiece
 
-  MOVES =[
-    [0,1],
-    [0,2],
-    [0,3],
-    [0,4],
-    [0,5],
-    [0,6],
-    [0,7],
-    [0,0],
-    [1,0],
-    [2,0],
-    [3,0],
-    [4,0],
-    [5,0],
-    [6,0],
-    [7,0]
-  ]
-
   def initialize(starting_pos, board, color)
     super
-  end
-
-  def mov_dirs
-
   end
 
   def symbol
