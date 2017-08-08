@@ -1,7 +1,11 @@
 module SlidingPiece
 
   def moves
-
+    moves = []
+    move_dirs.each do |direction|
+      moves += grow_unblocked_moves_in_dir(direction)
+    end
+    moves
   end
 
   def move_dirs

@@ -9,6 +9,10 @@ class Rook < Piece
     super
   end
 
+  def move_dirs
+    horizontal_dirs
+  end
+
   def symbol
     if @color == :white
       "\u{265C} ".light_white #white rook
