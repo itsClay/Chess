@@ -97,7 +97,7 @@ class Cursor
 
   def update_pos(diff)
     new_row = @cursor_pos.first + diff.first
-    new_col = @cursor_pos.last + diff.first
+    new_col = @cursor_pos.last + diff.last
     if @board.in_bounds([new_row, new_col])
       @cursor_pos = [new_row, new_col]
     end
