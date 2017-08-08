@@ -2,8 +2,10 @@ require_relative 'stepping_piece_module'
 require 'colorize'
 
 class Knight < Piece
-  def initialize(starting_pos, board, color)
-    super
+  include SteppingPiece
+
+  def move_dirs
+    knight_dirs
   end
 
   def symbol

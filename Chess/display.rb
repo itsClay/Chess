@@ -27,6 +27,8 @@ class Display
       end
       print "\n"
     end
+    p @cursor.cursor_pos
+    p @board[@cursor.cursor_pos].moves
   end
 end
 

@@ -29,6 +29,6 @@ module SlidingPiece
       next_move = [next_move.first + d_row, next_move.last + d_col]
     end
 
-    moves result
+    result
   end
 end

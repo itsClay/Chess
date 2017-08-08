@@ -1,9 +1,11 @@
-require_relative 'sliding_piece_module'
+require_relative 'stepping_piece_module'
 require 'colorize'
 
 class King < Piece
-  def initialize(starting_pos, board, color)
-    super
+  include SteppingPiece
+
+  def move_dirs
+    king_dirs
   end
 
   def symbol
