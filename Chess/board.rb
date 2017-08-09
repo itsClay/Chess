@@ -62,19 +62,48 @@ class Board
   def in_check?(color)
     opp_color = color == :black ? :white : :black
     king_pos = []
+    bad_guys = []
 
     @grid.each do |row|
       row.each do |piece|
         if piece.is_a?(King) && piece.color == color
           king_pos = piece.pos
         end
+
+        if piece.color == opp_color
+          bad_guys << piece
+        end
       end
     end
+
+    bad_guys.each do |bad_guy|
+      return true if bad_guy.moves.include?(king_pos)
+    end
+    false
+  end
+
+  def dup
+    b = Board.new
+    @grid.each_index do |row_i|
+      @grid[row_i].each_index do |col_i|
+        pos = [row_i, col_i]
+        if self[pos].is_a?(NullPiece)
+          b[pos] = self[pos]
+        else
+          old = self[pos]
+          b[pos] = old.class.new([pos], b, old.color)
+        end
+      end
+    end
+    b
+  end
+
+  def check_mate?(color)
 
   end
 end
 
-if __FILE__ == $PROGRAM_NAME
+if $PROGRAM_NAME == __FILE__
   b = Board.new
   p b.grid
 end
