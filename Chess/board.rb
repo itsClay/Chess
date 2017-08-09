@@ -58,6 +58,20 @@ class Board
     return false if row > 7 || col > 7
     true
   end
+
+  def in_check?(color)
+    opp_color = color == :black ? :white : :black
+    king_pos = []
+
+    @grid.each do |row|
+      row.each do |piece|
+        if piece.is_a?(King) && piece.color == color
+          king_pos = piece.pos
+        end
+      end
+    end
+
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
