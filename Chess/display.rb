@@ -12,10 +12,13 @@ class Display
   end
 
   def render
+    possible_moves = @board[@cursor.cursor_pos].moves
     @board.grid.each_with_index do |row, row_i|
       row.each_with_index do |square, col_i|
         piece_symbol = @board[[row_i, col_i]].symbol
-        if @cursor.cursor_pos == [row_i, col_i]
+        if possible_moves.include?([row_i, col_i])
+          print piece_symbol.on_light_green
+        elsif @cursor.cursor_pos == [row_i, col_i]
           print piece_symbol.on_light_red
         elsif row_i.odd?
           print piece_symbol.on_light_black if col_i.odd?
@@ -28,7 +31,6 @@ class Display
       print "\n"
     end
     p @cursor.cursor_pos
-    p @board[@cursor.cursor_pos].moves
   end
 end
 

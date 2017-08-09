@@ -12,7 +12,7 @@ class NullPiece < Piece
   end
 
   def moves
-    "THIS IS A NULL PIECE IDIOT"
+    []
   end
 
   def move_dirs
